@@ -97,16 +97,10 @@ public class MainActivity extends AppCompatActivity implements
         robot.hideTopBar();
         robot.toggleWakeup(true);
         robot.finishConversation();
-        if(closedBrowser) {
-            checkout = Browser.getCheckoutStatus();
-            timeout = Browser.getTimeoutStatus();
-            exit = Browser.getExitStatus();
-            closedBrowser = false;
-            onResume = true;
-            patrol = true;
-            goToPatrol = new Thread(this::goToPatrol);
-            goToPatrol.start();
-        }
+        robot.setTrackUserOn(true);
+        robot.setDetectionModeOn(true);
+        robot.toggleWakeup(false);
+         
     }
 
     @Override
@@ -439,7 +433,6 @@ public class MainActivity extends AppCompatActivity implements
                 }
                 if(!onResume) {
                     robot.goTo(checkpoints[i]);
-//                robot.goTo("home base");
                     while (!reached) {}
                     reached = false;
                     lastCheckpoint = checkpoints[i];
@@ -447,13 +440,10 @@ public class MainActivity extends AppCompatActivity implements
                 touchDetected = false;
                 if (!patrol) {break;}
                 for (int k = 0; k < 300; k++) {
-                    robot.setTrackUserOn(true);
-                    robot.setDetectionModeOn(true);
                     showMessage("k > "+ k, greenColor);
                     if (!onResume && touchDetected || faceDetected) {
                         touchDetected = false;
                         onConversationDone = false;
-                        enableWakeup();
                         robot.speak(TtsRequest.create("Hi there, if you need assistant for location guidance please call, " + robot.getWakeupWord() + ". If you wish to place your orders, please press, Browser Menu, on the screen. Thank you.", false));
                         detected = true;
                     }
@@ -476,9 +466,6 @@ public class MainActivity extends AppCompatActivity implements
                     }
                     TimeUnit.MILLISECONDS.sleep(100);
                 }
-                disableWakeup();
-                robot.setDetectionModeOn(false);
-                robot.setTrackUserOn(false);
                 if (!patrol) {break;}
                 if (i == 2) {i = -1;}
             }
@@ -486,15 +473,7 @@ public class MainActivity extends AppCompatActivity implements
             e.printStackTrace();
         }
     }
-
-    public void disableWakeup() {
-        robot.toggleWakeup(true);
-    }
-
-    public void enableWakeup() {
-        robot.toggleWakeup(false);
-    }
-
+                
     public float findNearestCheckpoint() {
         float nearest = checkpointsDistance[0];
         for (int j = 0; j < 3; j++) {
