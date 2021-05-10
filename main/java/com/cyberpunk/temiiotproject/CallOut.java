@@ -34,7 +34,7 @@ public class CallOut extends Service implements OnCurrentPositionChangedListener
     //public MyService() {
     // }
     public static final int SERVERPORT = 3838;
-    public static final String SERVER_IP = "192.168.50.82";
+    public static final String SERVER_IP = ""; //enter ip address
 
     private ClientThread clientThread;
     private Thread thread;
