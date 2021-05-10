@@ -8,7 +8,7 @@ import json
 import mysql.connector
 import threading
 
-serverHost = '192.168.50.82'
+serverHost = '' # enter ip address
 serverPort = 3838
 
 getBattPercent = 'battery_strength'
