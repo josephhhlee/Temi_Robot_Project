@@ -37,10 +37,10 @@ def connectSQL():
     while True:
         try:
             mydb = mysql.connector.connect(
-                host="192.168.48.210",
-                user="lance",
-                password="1234",
-                database="batterystatus")
+                host="",
+                user="",
+                password="",
+                database="")
             mycursor = mydb.cursor()
             connectedSQL = True
             if starting:
@@ -62,7 +62,7 @@ def readSQL():
         print(x)
  
 def writeSQL(title, value, idNum):
-    sql1 = "UPDATE battery_status SET "+title+" = %s WHERE id = %s"
+    sql1 = "UPDATE table SET "+title+" = %s WHERE id = %s"
     val1 = (value, idNum)
     mycursor.execute(sql1, val1)
     mydb.commit()
