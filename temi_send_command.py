@@ -3,8 +3,8 @@ import json
 import sys
 import time
 
-HOST = '192.168.43.61'  # The server's hostname or IP address
-PORT = 3003        # The port used by the server
+HOST = ''  # enter server's ip address
+PORT = 3003 
 
 goToPos = "1"
 goTo = "2"
