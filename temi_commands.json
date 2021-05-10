@@ -1,0 +1,44 @@
+{ 
+  "1" :
+    {"goToPos": 
+      [
+        {
+          "x": null,
+          "y": null,
+          "yaw": null
+        }
+      ]
+    }, 
+  "2" :
+    {"goTo": 
+      [
+        {
+          "desto": null
+        }
+      ]
+    },
+  "3" :
+    {"saveLocation": 
+      [
+        {
+          "location": null
+        }
+      ]
+    },
+  "4" :
+    {"speak": 
+      [
+        {
+          "say": null
+        }
+      ]
+    },
+  "5" :
+    {"stopPatrol": 
+      [
+        {
+          "patrol": true
+        }
+      ]
+    }
+}
