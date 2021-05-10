@@ -31,7 +31,6 @@ public class Browser extends AppCompatActivity {
         // webview.getSettings().setBuiltInZoomControls(true);
         webview.getSettings().setJavaScriptEnabled(true);
         webview.loadUrl("https://www.mcdelivery.com.sg/sg/browse/menu.html");
-//        webview.loadUrl("198.162.0.107");
         checkout = false;
         exit = false;
         timeout = false;
